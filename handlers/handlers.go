@@ -178,7 +178,7 @@ func (h *handler) ForgotPassword(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"msg": "Track Id missing"})
 	}
 
-	var resetPassword models.ResetPasswordReq
+	var resetPassword models.ForgotPasswordReq
 	credit := c.Request.Body
 	err := json.NewDecoder(credit).Decode(&resetPassword)
 	if err != nil {

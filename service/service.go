@@ -120,7 +120,7 @@ func (c *Conn) UserAuthentication(login models.LoginReq) (jwt.RegisteredClaims, 
 // take the email and dob from request body
 // search for check weather email and dob match to database
 // if it is matched send otp else don't send otp
-func (c *Conn) UserExist(rp models.ResetPasswordReq) (models.User, error) {
+func (c *Conn) UserExist(rp models.ForgotPasswordReq) (models.User, error) {
 	email := rp.Email
 	dob := rp.DOB
 
@@ -143,7 +143,7 @@ func GenerateOTP() (int, error) {
 }
 
 // GenerateAndSendOTP generates an OTP and sends it via email.
-func (c *Conn) GenerateAndSendOTP(rp models.ResetPasswordReq) (int, error) {
+func (c *Conn) GenerateAndSendOTP(rp models.ForgotPasswordReq) (int, error) {
 	// Generate a random OTP
 	OTP, err := GenerateOTP()
 	if err != nil {
